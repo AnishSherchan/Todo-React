@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@300&display=swap");
+body {
+  background-color: #e7eafb;
+  font-family: "Red Hat Display", sans-serif;
+}
