@@ -11,6 +11,16 @@ const todoSlice = createSlice({
       // console.log(action.payload);
       state.splice(action.payload, 1);
     },
+    editTodo(state, action) {
+      console.log(action.payload);
+
+      const editedTodo = state.map((item, index) =>
+        index === action.payload.data ? action.payload.t : item
+      );
+
+      return editedTodo;
+    },
+
     removeAllTodo(state, action) {
       return [];
     },
@@ -18,4 +28,5 @@ const todoSlice = createSlice({
 });
 
 export default todoSlice.reducer;
-export const { addTodo, removeTodo, removeAllTodo } = todoSlice.actions;
+export const { addTodo, removeTodo, editTodo, removeAllTodo } =
+  todoSlice.actions;
