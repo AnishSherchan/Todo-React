@@ -9,6 +9,8 @@ const TodoContainer = () => {
           Add New Todo
         </button>
       </div>
+      <p>Go School</p>
+      <p>Go Shower</p>
     </div>
   );
 };
