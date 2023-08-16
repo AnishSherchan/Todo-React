@@ -9,6 +9,5 @@ const todoSlice = createSlice({
     removeAllTodo(state, action) {},
   },
 });
-console.log(todoSlice);
 
 export default todoSlice.reducer;
