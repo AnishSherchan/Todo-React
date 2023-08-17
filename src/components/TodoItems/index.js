@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   removeTodo as removeaTodo,
   // removeAllTodo,
-  editTodo,
 } from "../../store/slices/UserSlice";
 import SimpleModal from "../SimpleModal";
 import NoData from "../NoData";
@@ -18,12 +17,7 @@ const TodoItems = () => {
     return state.todo;
   });
   const removeTodo = (data) => {
-    // console.log(data);
     dispatch(removeaTodo(data));
-  };
-  const edit = (data) => {
-    let t = "ttt";
-    dispatch(editTodo({ t, data }));
   };
   const handelEdit = (data) => {
     setIsOpen(true);

@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addTodo } from "../../store/slices/UserSlice";
 import AddButton from "../Buttons/AddButton";
 import SimpleModal from "../SimpleModal";
 

@@ -12,8 +12,6 @@ const todoSlice = createSlice({
       state.splice(action.payload, 1);
     },
     editTodo(state, action) {
-      console.log(action.payload);
-      console.log(state);
       const { task, index } = action.payload;
       const editedTodos = state.map((item, currentIndex) =>
         currentIndex === index ? { ...item, todo: task } : item
