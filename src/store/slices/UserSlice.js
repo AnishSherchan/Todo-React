@@ -13,12 +13,12 @@ const todoSlice = createSlice({
     },
     editTodo(state, action) {
       console.log(action.payload);
-
-      const editedTodo = state.map((item, index) =>
-        index === action.payload.data ? action.payload.t : item
+      console.log(state);
+      const { task, index } = action.payload;
+      const editedTodos = state.map((item, currentIndex) =>
+        currentIndex === index ? { ...item, todo: task } : item
       );
-
-      return editedTodo;
+      return editedTodos;
     },
 
     removeAllTodo(state, action) {

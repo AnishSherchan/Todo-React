@@ -6,11 +6,6 @@ import SimpleModal from "../SimpleModal";
 
 const NoData = ({ title }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const dispatch = useDispatch();
-  const addNewTask = () => {
-    const task = `Random todo ${Math.floor(Math.random() * 101)}`;
-    dispatch(addTodo(task));
-  };
   return (
     <div className=" flex flex-col mt-8 items-center gap-7 justify-center">
       <img className=" h-44" src="/undraw_mornings_re_cofi.svg" alt="No data" />

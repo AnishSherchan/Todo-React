@@ -1,23 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  addTodo,
   removeTodo as removeaTodo,
   // removeAllTodo,
   editTodo,
 } from "../../store/slices/UserSlice";
+import SimpleModal from "../SimpleModal";
 import NoData from "../NoData";
 import AddButton from "../Buttons/AddButton";
 
 const TodoItems = () => {
   const dispatch = useDispatch();
+  const [isOpen, setIsOpen] = useState(false);
+  const [Tododata, setData] = useState(null);
   const data = useSelector((state) => {
-    return state;
+    return state.todo;
   });
-  const addNewTask = () => {
-    const task = `Random todo ${Math.floor(Math.random() * 101)}`;
-    dispatch(addTodo(task));
-  };
   const removeTodo = (data) => {
     // console.log(data);
     dispatch(removeaTodo(data));
@@ -26,17 +25,36 @@ const TodoItems = () => {
     let t = "ttt";
     dispatch(editTodo({ t, data }));
   };
+  const handelEdit = (data) => {
+    setIsOpen(true);
+    setData(data);
+  };
   return (
     <div>
-      {data.todo.length > 0 && (
+      {data.length > 0 && (
         <div className=" flex justify-end">
-          <AddButton handleClick={addNewTask} bg={false} />
+          <AddButton
+            handleClick={() => {
+              setIsOpen(true);
+            }}
+            bg={false}
+          />
         </div>
       )}
-      {data.todo.length > 0 ? (
-        data.todo?.map((item, index) => (
-          <div className="flex justify-between" key={index}>
-            <p>{item}</p>
+      {data.length > 0 ? (
+        data?.map((item, index) => (
+          <div className="flex justify-between mt-6" key={index}>
+            <div className=" flex gap-3">
+              <button
+                onClick={() => {
+                  // edit(index);
+                }}
+              >
+                {" "}
+                <Icon icon="fluent-mdl2:completed" color="green" width="20" />
+              </button>
+              <p>{item.todo}</p>
+            </div>
             <div className=" flex gap-2">
               <button
                 onClick={() => {
@@ -44,15 +62,11 @@ const TodoItems = () => {
                 }}
               >
                 {" "}
-                delete
+                <Icon icon="fluent:delete-28-regular" color="red" width="20" />
               </button>
-              <button
-                onClick={() => {
-                  edit(index);
-                }}
-              >
+              <button onClick={() => handelEdit({ todo: item.todo, index })}>
                 {" "}
-                edit
+                <Icon icon="fluent:edit-20-regular" color="blue" width="20" />
               </button>
             </div>
           </div>
@@ -60,6 +74,16 @@ const TodoItems = () => {
       ) : (
         <NoData title="What kinf of day shall we have today." />
       )}
+      <SimpleModal
+        title="Add Todo"
+        isOpen={isOpen}
+        closeModal={() => {
+          setIsOpen(false);
+          setData(null);
+        }}
+        modalData={Tododata}
+        setData={setData}
+      />
     </div>
   );
 };
