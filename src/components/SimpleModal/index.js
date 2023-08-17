@@ -34,6 +34,8 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
     } else {
       reset();
     }
+    // esling disable
+    /* eslint-disable-next-line */
   }, [modalData]);
 
   return (
