@@ -8,7 +8,6 @@ const todoSlice = createSlice({
       state.push(action.payload);
     },
     removeTodo(state, action) {
-      // console.log(action.payload);
       state.splice(action.payload, 1);
     },
     editTodo(state, action) {

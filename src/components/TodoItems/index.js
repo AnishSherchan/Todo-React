@@ -18,9 +18,8 @@ const TodoItems = () => {
   const data = useSelector((state) => {
     return state.todo;
   });
-  const completedTodoList = data?.filter((item) => item.completed === true);
-  const pendingTodoList = data?.filter((item) => item.completed === false);
-  console.log(completedTodoList);
+  const completedTodoList = data?.filter((item) => item?.completed === true);
+  const pendingTodoList = data?.filter((item) => item?.completed === false);
   let todoToRender = [];
   if (selectedFilter === "all") {
     todoToRender = data;
@@ -30,20 +29,21 @@ const TodoItems = () => {
     todoToRender = pendingTodoList;
   }
 
-  const removeTodo = (data) => {
-    dispatch(removeaTodo(data));
+  const removeTodo = (datas) => {
+    const todoIndex = data.findIndex((item) => item.todo === datas);
+    dispatch(removeaTodo(todoIndex));
   };
   const handelEdit = (data) => {
     setIsOpen(true);
     setData(data);
   };
-  const completedTodo = (data) => {
+  const completedTodo = (datas) => {
     const {
-      index,
-      item: { completed: status },
-    } = data;
+      item: { todo: task, completed: status },
+    } = datas;
+    const todoIndex = data.findIndex((item) => item.todo === task);
     const UpdateData = {
-      index,
+      index: todoIndex,
       status: !status, // Inverting the status value using the NOT operator (!)
     };
     // console.log(UpdateData);
@@ -94,7 +94,7 @@ const TodoItems = () => {
               <div className="flex gap-2">
                 <button
                   onClick={() => {
-                    removeTodo(index);
+                    removeTodo(item.todo);
                   }}
                 >
                   <Icon

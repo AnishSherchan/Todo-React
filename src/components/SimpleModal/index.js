@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { addTodo, editTodo } from "../../store/slices/UserSlice";
 
@@ -15,9 +15,15 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
     formState: { errors },
   } = useForm();
 
+  const StateArray = useSelector((state) => {
+    return state.todo;
+  });
+
   const onSubmit = (data) => {
     if (modalData) {
-      const updatedTodo = { task: data.todo, index: modalData.index };
+      const { todo: task } = modalData;
+      const todoIndex = StateArray.findIndex((item) => item.todo === task);
+      const updatedTodo = { task: data.todo, index: todoIndex };
       dispatch(editTodo(updatedTodo));
     } else {
       // completed false means its is not completed
