@@ -5,7 +5,6 @@ import { addTodo, editTodo } from "../../store/slices/UserSlice";
 
 const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
   const dispatch = useDispatch();
-
   //Importing React Hook form for validating user input
   const {
     register,
@@ -44,15 +43,6 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
     /* eslint-disable-next-line */
   }, [modalData]);
 
-  // useEffect(() => {
-  //   console.log(StateArray.length);
-  //   if (StateArray.length >= 0) {
-  //     const dataString = JSON.stringify(StateArray);
-  //     localStorage.setItem("todos", dataString);
-  //   }
-  //   /* eslint-disable-next-line */
-  // }, [StateArray]);
-
   return (
     <div
       className={`${
@@ -68,7 +58,9 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
       ></div>
 
       <div className=" absolute inset-0 max-w-md h-min rounded-2xl p-5 mx-auto my-auto bg-white">
-        <h1 className=" text-lg font-semibold">{title}</h1>
+        <h1 className=" text-lg font-semibold">
+          {title ? title : modalData ? "Edit your To-do" : "Add new To-do"}
+        </h1>
         <form onSubmit={handleSubmit(onSubmit)} className=" my-6">
           <input
             type="text"
@@ -91,7 +83,7 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
             onClick={handleSubmit(onSubmit)}
             className=" text-white  bg-[#3F3D56] rounded-full p-2 px-3"
           >
-            Add Todo
+            {modalData ? "Edit To-do" : "Add To-do"}
           </button>
           <button
             onClick={() => {
@@ -100,7 +92,7 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
             }}
             className=" text-[#3F3D56] font-semibold  bg-[#C1C1C1] rounded-full p-2 px-3"
           >
-            Close Modal
+            Close
           </button>
         </div>
       </div>

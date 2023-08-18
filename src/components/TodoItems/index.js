@@ -151,7 +151,6 @@ const TodoItems = () => {
         />
       )}
       <SimpleModal
-        title="Add Todo"
         isOpen={isOpen}
         closeModal={() => {
           setIsOpen(false);

@@ -11,7 +11,7 @@ const NoData = ({ title, button, image }) => {
         {title}
       </p>
       {button && <AddButton handleClick={() => setIsOpen(true)} bg={true} />}
-      <SimpleModal title="Add Todo" isOpen={isOpen} closeModal={setIsOpen} />
+      <SimpleModal isOpen={isOpen} closeModal={setIsOpen} />
     </div>
   );
 };
