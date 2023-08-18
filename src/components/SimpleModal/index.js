@@ -20,7 +20,8 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
       const updatedTodo = { task: data.todo, index: modalData.index };
       dispatch(editTodo(updatedTodo));
     } else {
-      const todo = { ...data, status: 0 };
+      // completed false means its is not completed
+      const todo = { ...data, completed: false };
       dispatch(addTodo(todo));
     }
     closeModal();
