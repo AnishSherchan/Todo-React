@@ -65,12 +65,16 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
             type="text"
             {...register("todo", {
               required: "Field is empty!",
-              maxLength: 20,
+              maxLength: {
+                value: 20,
+                message: "Exceeds maximum length of 20 characters!",
+              },
             })}
             className={` 
-            ${errors.todo ? "border-red-500 focus:ring-red-500" : ""}
-            border rounded-lg  w-full p-2.5 focus:outline-none`}
+              ${errors.todo ? "border-red-500 focus:ring-red-500" : ""}
+              border rounded-lg  w-full p-2.5 focus:outline-none`}
           />
+
           <label className="text-red-500 text-xs">{errors.todo?.message}</label>
         </form>
         <div className="flex justify-end gap-3 mt-9">

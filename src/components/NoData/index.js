@@ -7,7 +7,7 @@ const NoData = ({ title, button, image }) => {
   return (
     <div className=" flex flex-col flex-wrap mt-8 items-center gap-7 justify-center">
       <img className=" h-44" src={image} alt="No data" />
-      <p className=" uppercase font-semibold opacity-60 tracking-wider text-lg">
+      <p className=" text-center uppercase font-semibold opacity-60 tracking-wider text-lg">
         {title}
       </p>
       {button && <AddButton handleClick={() => setIsOpen(true)} bg={true} />}
