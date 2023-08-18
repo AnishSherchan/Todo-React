@@ -8,7 +8,6 @@ import {
 } from "../../store/slices/UserSlice";
 import SimpleModal from "../SimpleModal";
 import NoData from "../NoData";
-import AddButton from "../Buttons/AddButton";
 import NavItems from "../NavBar/NavItems";
 
 const TodoItems = () => {
