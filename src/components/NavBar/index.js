@@ -35,7 +35,7 @@ const NavBar = () => {
   const year = currentDate.getFullYear();
   return (
     <div>
-      <div className="flex justify-between">
+      <div className="flex flex-wrap justify-between">
         <div className=" flex items-center gap-2">
           <div>
             <p className=" font-bold text-4xl opacity-70">{date}</p>

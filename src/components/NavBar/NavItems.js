@@ -4,8 +4,8 @@ import AddButton from "../Buttons/AddButton";
 const NavItems = ({ selectedFilter, setSelectedFilter, setIsOpen }) => {
   const selectedFilters = selectedFilter;
   return (
-    <div className=" flex justify-between items-center">
-      <div className=" flex gap-7">
+    <div className=" flex justify-between flex-wrap items-center">
+      <div className=" flex gap-7 flex-wrap">
         <p
           className={` cursor-pointer${
             selectedFilters === "all"

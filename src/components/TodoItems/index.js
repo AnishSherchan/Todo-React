@@ -62,7 +62,7 @@ const TodoItems = () => {
         todoToRender.length > 0 ? (
           todoToRender.map((item, index) => (
             <div
-              className="flex justify-between bg-[#E7EAFB] p-4 rounded-3xl md:bg-white md:p-0 md:rounded-none mt-4"
+              className="flex justify-between flex-wrap bg-[#E7EAFB] p-4 rounded-3xl md:bg-white md:p-0 md:rounded-none mt-4"
               key={index}
             >
               <div className="flex gap-3">
@@ -78,7 +78,11 @@ const TodoItems = () => {
                       width="20"
                     />
                   ) : (
-                    <Icon icon="system-uicons:circle" width="23" />
+                    <Icon
+                      icon="system-uicons:circle"
+                      color="#F29339"
+                      width="25"
+                    />
                   )}
                   {/* <Icon icon="system-uicons:circle" width="23" />
                   <Icon icon="fluent-mdl2:completed" color="green" width="20" /> */}
@@ -91,7 +95,16 @@ const TodoItems = () => {
                   {item.todo}
                 </p>
               </div>
-              <div className="flex gap-2">
+              <div className="flex gap-2 items-center">
+                <Icon
+                  onClick={() => {
+                    completedTodo({ index, item });
+                  }}
+                  icon="fluent-mdl2:completed"
+                  color="green"
+                  width="20"
+                  className=" cursor-pointer"
+                />
                 <button
                   onClick={() => {
                     removeTodo(item.todo);
