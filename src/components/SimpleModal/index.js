@@ -44,6 +44,15 @@ const SimpleModal = ({ isOpen, closeModal, title, modalData }) => {
     /* eslint-disable-next-line */
   }, [modalData]);
 
+  // useEffect(() => {
+  //   console.log(StateArray.length);
+  //   if (StateArray.length >= 0) {
+  //     const dataString = JSON.stringify(StateArray);
+  //     localStorage.setItem("todos", dataString);
+  //   }
+  //   /* eslint-disable-next-line */
+  // }, [StateArray]);
+
   return (
     <div
       className={`${

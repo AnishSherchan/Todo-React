@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Icon } from "@iconify/react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -6,6 +6,7 @@ import {
   completeTodo,
   // removeAllTodo,
 } from "../../store/slices/UserSlice";
+import { loadTodosFromLocalStorage } from "../../store/actions";
 import SimpleModal from "../SimpleModal";
 import NoData from "../NoData";
 import NavItems from "../NavBar/NavItems";
@@ -49,6 +50,23 @@ const TodoItems = () => {
     // console.log(UpdateData);
     dispatch(completeTodo(UpdateData));
   };
+
+  useEffect(() => {
+    const handleUnload = (event) => {
+      // Save todos to Local Storage before unloading
+      localStorage.setItem("todos", JSON.stringify(data));
+    };
+
+    window.addEventListener("beforeunload", handleUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleUnload);
+    };
+  }, [data, dispatch]);
+
+  useEffect(() => {
+    dispatch(loadTodosFromLocalStorage());
+  }, [dispatch]);
   return (
     <div>
       {data.length > 0 && (
