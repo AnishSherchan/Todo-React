@@ -5,7 +5,7 @@ Delpoyed: https://todo-anish.netlify.app/
 
 ## Tech Stack
 
-**Client:** React, Redux Toolkit(RTK), TailwindCSS, LocalStorage
+**Client:** React, Redux Toolkit(RTK), TailwindCSS, LocalStorage, Iconify, ReactHook-Form
 
 ## Run Locally
 
